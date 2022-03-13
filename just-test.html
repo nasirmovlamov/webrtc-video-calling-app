@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script.js" defer></script>
+</head>
+<body >
+
+
+
+    <div class="videos-block">
+        <video id="video" ></video>
+        <canvas id="canvas" ></canvas>
+    </div>
+
+    <div class="video-btns">
+        <button id="start-camera">open camera</button>
+        <button id="start-record">start record</button>
+        <button id="stop-record" >stop record</button>
+        <a id="save-record" href="#"  download>save</a>
+    </div>
+
+    <script>
+        // Create WebSocket connection.
+        const socket = new WebSocket(`ws://${location.host}/:5500`);
+
+        // Connection opened
+        socket.addEventListener('open', function (event) {
+            socket.send('Hello Server!');
+        });
+
+        // Listen for messages
+        socket.addEventListener('message', function (event) {
+            console.log('Message from server ', event.data);
+        });
+    </script>
+   
+
+    <style>
+        .videos-block {
+            margin: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .videos-block video , .videos-block canvas {
+            width: 150px;
+            height: auto;
+        }
+
+        .video-btns{
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-btns button , .video-btns a{
+            width: 150px;
+            height: 35px;
+            border: 1px solid gray;
+            color: green;
+            border-radius: 15px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+            font-weight: normal;
+            font: 1em sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+       
+    </style>
+</body>
+</html>
