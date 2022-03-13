@@ -7,7 +7,7 @@ const showChat = document.querySelector("#showChat");
 const backBtn = document.querySelector(".header__back");
 
 const socketChat = new WebSocket("ws://localhost:8080/hello?id=1");
-const socketVD = new WebSocket("ws://localhost:8080/hello?id=1");
+const socketStreaming = new WebSocket("ws://localhost:8080/hello?id=1");
 
 
 var urlCreator = window.URL || window.webkitURL;
@@ -15,9 +15,7 @@ var urlCreator = window.URL || window.webkitURL;
 myVideo.muted = true;
 //#endregion starting data
 
-//#region For Recording
 
-//#endregion For Recording
 
 //#region Streaming
 function getName() {
